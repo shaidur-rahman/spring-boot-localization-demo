@@ -61,3 +61,7 @@ yarn-error.log*
 
 # Others
 .env
+
+!**/src/main/**
+!**/src/test/**
+
