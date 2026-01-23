@@ -1,0 +1,63 @@
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+# Maven / Java
+target/
+*/target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.log
+*.rar
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+*/bin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+*.ipr
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Spring Boot / Dev Tools
+spring-boot-devtools-*.jar
+
+# Logs
+*.log
+logs/
+
+# Node / frontend (if any)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Others
+.env
