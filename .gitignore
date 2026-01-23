@@ -23,6 +23,7 @@ target/
 *.rar
 
 # Eclipse
+*.factorypath
 .project
 .classpath
 .settings/
