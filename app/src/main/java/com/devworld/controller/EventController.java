@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.devworld.dto.EventDTO;
-import com.devworld.service.EventService;
+import com.devworld.facade.EventFacade;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,23 +19,23 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/events")
 @RequiredArgsConstructor
 public class EventController {
-	private final EventService service;
+	private final EventFacade facade;
 
 	@GetMapping
 	public String list(Model model) {
-		model.addAttribute("events", service.findAll());
+		model.addAttribute("events", facade.findAll());
 		return "events";
 	}
 
 	@PostMapping("/save")
 	@ResponseBody
 	public EventDTO saveEvent(@RequestBody EventDTO dto) {
-		return service.save(dto);
+		return facade.save(dto);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public void deleteEvent(@PathVariable Long id) {
-		service.delete(id);
+		facade.delete(id);
 	}
 }

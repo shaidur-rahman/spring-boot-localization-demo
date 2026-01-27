@@ -1,11 +1,9 @@
 package com.devworld.dto;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Instant;
 
 public record EventDTO(
 		Long id,
 		String description,
-		LocalDate date,
-		LocalTime time
+		Instant eventTime
 ) {}
