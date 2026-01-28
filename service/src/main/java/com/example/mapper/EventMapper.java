@@ -1,12 +1,12 @@
-package com.devworld.mapper;
+package com.example.mapper;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import com.devworld.dto.EventDTO;
-import com.devworld.model.Event;
+import com.example.dto.EventDTO;
+import com.example.model.Event;
 
 public class EventMapper {
 

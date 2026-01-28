@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.devworld</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>spring-boot-localization-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -42,25 +42,25 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.devworld</groupId>
+				<groupId>com.example</groupId>
 				<artifactId>dto</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.devworld</groupId>
+				<groupId>com.example</groupId>
 				<artifactId>model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.devworld</groupId>
+				<groupId>com.example</groupId>
 				<artifactId>repository</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.devworld</groupId>
+				<groupId>com.example</groupId>
 				<artifactId>service</artifactId>
 				<version>${project.version}</version>
 			</dependency>

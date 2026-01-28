@@ -1,11 +1,11 @@
-package com.devworld.service;
+package com.example.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.devworld.model.Event;
-import com.devworld.repository.EventRepository;
+import com.example.model.Event;
+import com.example.repository.EventRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.devworld.controller;
+package com.example.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.devworld.dto.EventDTO;
-import com.devworld.facade.EventFacade;
+import com.example.dto.EventDTO;
+import com.example.facade.EventFacade;
 
 import lombok.RequiredArgsConstructor;
 

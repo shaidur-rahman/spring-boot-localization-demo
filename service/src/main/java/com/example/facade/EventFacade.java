@@ -1,13 +1,13 @@
-package com.devworld.facade;
+package com.example.facade;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.devworld.dto.EventDTO;
-import com.devworld.mapper.EventMapper;
-import com.devworld.model.Event;
-import com.devworld.service.EventService;
+import com.example.dto.EventDTO;
+import com.example.mapper.EventMapper;
+import com.example.model.Event;
+import com.example.service.EventService;
 
 import lombok.RequiredArgsConstructor;
 

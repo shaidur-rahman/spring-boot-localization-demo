@@ -5,7 +5,7 @@
 	<artifactId>app</artifactId>
 
 	<parent>
-		<groupId>com.devworld</groupId>
+		<groupId>com.example</groupId>
 		<artifactId>spring-boot-localization-demo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -28,11 +28,11 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.devworld</groupId>
+			<groupId>com.example</groupId>
 			<artifactId>service</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.devworld</groupId>
+			<groupId>com.example</groupId>
 			<artifactId>dto</artifactId>
 		</dependency>
 
