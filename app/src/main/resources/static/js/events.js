@@ -1,40 +1,60 @@
-// events.js
 document.addEventListener("DOMContentLoaded", () => {
 	const { DateTime } = luxon;
 	const tableBody = document.querySelector("#eventsTable tbody");
 	const addRowBtn = document.getElementById("addRowBtn");
 	const templateRow = document.getElementById("newEventTemplate");
 
-	// ------------------- Utility Functions -------------------
 	function initializeRow(row) {
 		const dateInput = row.querySelector(".event-date");
 		const timeInput = row.querySelector(".event-time");
-		const hiddenInput = row.querySelector(".offset-date-time");
+		const isoDateTimeInput = row.querySelector(".offset-date-time");
 
-		// Set date/time from hidden ISO field
-		function fromHiddenToInputs() {
-			if (!hiddenInput.value) return;
-			const dt = DateTime.fromISO(hiddenInput.value, { zone: 'local' });
-			dateInput.value = dt.toISODate();
-			timeInput.value = dt.toFormat('HH:mm');
-		}
-
-		// Update hidden ISO field from date/time inputs
-		function fromInputsToHidden() {
-			if (!dateInput.value || !timeInput.value) {
-				hiddenInput.value = '';
-				return;
-			}
-			const dt = DateTime.fromISO(`${dateInput.value}T${timeInput.value}`, { zone: 'local' });
-			hiddenInput.value = dt.toISO();
-		}
-
-		fromHiddenToInputs();
+		const { date, time } = formatToLocalDateAndTime(isoDateTimeInput.value);
+		dateInput.value = date;
+		timeInput.value = time;
 
 		[dateInput, timeInput].forEach(el => {
-			el.addEventListener('change', () => fromInputsToHidden());
-			el.addEventListener('focusout', () => fromInputsToHidden());
+			el.addEventListener('change', () => updateIsoDateTimeField());
+			el.addEventListener('focusout', () => updateIsoDateTimeField());
 		});
+
+		function updateIsoDateTimeField() {
+			const isoFormattedDate = formatToIso(dateInput.value, timeInput.value);
+			isoDateTimeInput.value = isoFormattedDate;
+		}
+	}
+
+	function formatToLocalDateAndTime(isoDateTime) {
+		if (!isoDateTime) {
+			return { date: '', time: '' };
+		}
+
+		const dt = DateTime.fromISO(isoDateTime, { zone: 'local' });
+		return {
+			date: dt.toISODate(),
+			time: dt.toFormat('HH:mm')
+		};
+	}
+
+	function formatToIso(dateValue, timeValue) {
+		if (!dateValue && !timeValue) {
+			return '';
+		}
+		if (!dateValue) { // set current local date if empty
+			dateValue = DateTime.local().toISODate(); // yyyy-MM-dd
+		}
+		if (!timeValue) { // set current local time if empty
+			timeValue = DateTime.local().toFormat('HH:mm');
+		}
+
+		const dt = DateTime.fromISO(`${dateValue}T${timeValue}`, { zone: 'local' }).set({});
+		if (!dt.isValid) {
+			console.warn('Invalid date-time:', dateValue, timeValue, dt.invalidReason);
+			return '';
+		}
+
+		// ISO 8601 with offset (e.g. 2026-01-26T15:51:00+06:00)
+		return dt.toISO();
 	}
 
 	function addRow() {
@@ -45,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		newRow.classList.add("editing");
 		newRow.dataset.new = "true";
 
-		// Disable description/date/time initially
 		const descInput = newRow.querySelector(".event-desc");
 		const dateInput = newRow.querySelector(".event-date");
 		const timeInput = newRow.querySelector(".event-time");
@@ -142,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			.catch(err => alert("Error deleting event: " + err));
 	}
 
-	// ------------------- Event Listeners -------------------
 	addRowBtn.addEventListener("click", addRow);
 
 	tableBody.addEventListener("click", (e) => {
